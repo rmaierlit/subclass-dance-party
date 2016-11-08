@@ -1,7 +1,7 @@
 var Dancer = function(top, left, timeBetweenSteps) {
   // x = Object.create(Dancer);
-  this.$node = $('<img src ="cat.jpg" alt = "" class="dancer">');
-  //debugger;
+  this.$node = $('<img class="dancer">');
+
   this.step();
 
   this.setPosition(top, left);

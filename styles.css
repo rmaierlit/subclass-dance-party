@@ -20,12 +20,30 @@ body, a:link, a:visited, a:active{
 .title{
   background-color: #777;
 }
+
+img{
+  height: 120px;
+  width: 90px;
+}
+
+
+/*.flip{
+  background: url('catflipped.jpg');
+  background-size: 100px 100px;
+  height: 100px;
+  width: 100px;
+}*/
+
+.cat{
+  height: 200px;
+  width: 200px;
+  background-repeat: no-repeat;
+}
+
+
+
 .dancer{
   border:10px solid red;
   border-radius:10px;
   position:absolute;
 }
-
-.big{
-  border: 20px solid blue;
-};

@@ -1,5 +1,6 @@
 var OtherDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
+  this.$node.addClass('cat');
 };
 
 OtherDancer.prototype = Object.create(Dancer.prototype);
@@ -9,8 +10,23 @@ OtherDancer.prototype.oldStep = OtherDancer.prototype.step;
 OtherDancer.prototype.step = function() {
 
   this.oldStep();
-  this.$node.toggleClass('big');
+  if (this.$node.hasClass('flip')) {
+    this.$node.attr('src', 'catflipped.jpg');
+    this.$node.css('background-size', '120px 80px');
+  } else {
+    this.$node.attr('src', 'cat.jpg');
+    this.$node.css('background-size', '120px 80px');
+  }
+  //this.$node.removeClass('dancer');
+  this.$node.toggleClass('flip');
+
+  //this.$node.toggleClass('cat');
+  //this.$node.toggleClass('big');
   //this.$node.toggle();
+};
+
+OtherDancer.prototype.lineUp = function(offset) {
+  this.setPosition(($('body').height() / 2) - 10, offset);
 };
 
 

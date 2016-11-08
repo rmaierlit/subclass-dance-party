@@ -1,32 +1,36 @@
 var OtherDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
-  this.$node.addClass('cat');
 };
 
 OtherDancer.prototype = Object.create(Dancer.prototype);
 OtherDancer.prototype.constructor = OtherDancer;
 
 OtherDancer.prototype.oldStep = OtherDancer.prototype.step;
+
 OtherDancer.prototype.step = function() {
 
   this.oldStep();
   if (this.$node.hasClass('flip')) {
-    this.$node.attr('src', 'catflipped.jpg');
-    this.$node.css('background-size', '120px 80px');
+    this.flip();
   } else {
-    this.$node.attr('src', 'cat.jpg');
-    this.$node.css('background-size', '120px 80px');
+    this.unflip();
   }
-  //this.$node.removeClass('dancer');
-  this.$node.toggleClass('flip');
 
-  //this.$node.toggleClass('cat');
-  //this.$node.toggleClass('big');
-  //this.$node.toggle();
+  this.$node.toggleClass('flip');
 };
 
 OtherDancer.prototype.lineUp = function(offset) {
   this.setPosition(($('body').height() / 2) - 10, offset);
+};
+
+OtherDancer.prototype.flip = function() {
+  this.$node.attr('src', 'catflipped.jpg');
+  this.$node.css('background-size', '120px 80px');
+};
+
+OtherDancer.prototype.unflip = function() {
+  this.$node.attr('src', 'cat.jpg');
+  this.$node.css('background-size', '120px 80px');
 };
 
 

@@ -8,7 +8,9 @@ var Dancer = function(top, left, timeBetweenSteps) {
 
   this.timeBetweenSteps = timeBetweenSteps;
 
-  window.dancers.push(this);
+  if (window.dancers) {
+    window.dancers.push(this);
+  }
 };
 
 Dancer.prototype.step = function() {
@@ -24,5 +26,9 @@ Dancer.prototype.setPosition = function(top, left) {
 };
 
 Dancer.prototype.lineUp = function(offset) {
-  this.setPosition($('body').height() / 2, offset);
+  this.setPosition(($('body').height() * .6) + (300 - this.$node.height()), offset);
+};
+
+Dancer.prototype.split = function(offset, left) {
+  this.setPosition(offset, left);
 };

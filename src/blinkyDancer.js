@@ -1,6 +1,8 @@
 var BlinkyDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
   this.$node.attr('src', 'glittercat.gif');
+  this.$node.css('height', '100px');
+  this.$node.css('width', '150px');
 
 };
 

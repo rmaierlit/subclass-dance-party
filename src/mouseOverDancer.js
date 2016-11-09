@@ -1,27 +1,34 @@
 var MouseOverDancer = function(top, left, timeBetweenSteps) {
-  Dancer.call(this, top, left, timeBetweenSteps);
+  OtherDancer.call(this, top, left, timeBetweenSteps);
   this.$node.attr('src', 'bowie.png');
+  this.top = top;
   this.$node.mouseover(this.mouseOver.bind(this));
   this.$node.mouseout(this.mouseOut.bind(this));
+  this.$node.addClass('small');
 };
 
-MouseOverDancer.prototype = Object.create(Dancer.prototype);
+MouseOverDancer.prototype = Object.create(OtherDancer.prototype);
 MouseOverDancer.prototype.constructor = MouseOverDancer;
 
-MouseOverDancer.prototype.oldStep = MouseOverDancer.prototype.step;
-
-MouseOverDancer.prototype.step = function() {
-  this.oldStep();
-};
-
 MouseOverDancer.prototype.mouseOver = function() {
-  this.$node.addClass('bowie');
+  this.$node.addClass('big');
+  this.$node.css('top', '' + (this.top - 150) + 'px');
 };
 
 MouseOverDancer.prototype.mouseOut = function() {
-  this.$node.removeClass('bowie');
+  this.$node.removeClass('big');
+  this.$node.css('top', '' + this.top + 'px');
 };
 
-// MouseOverDancer.prototype.lineUp = function(offset) {
-//   this.setPosition(($('body').height() / 2) - 10, offset);
-// };
+MouseOverDancer.prototype.flip = function() {
+  this.$node.attr('src', 'bowie.png');
+};
+
+MouseOverDancer.prototype.unflip = function() {
+  this.$node.attr('src', 'bowiegrey.png');
+};
+
+MouseOverDancer.prototype.lineUp = function(offset) {
+  this.top = ($('body').height() * .6) + (310 - this.$node.height());
+  this.setPosition(this.top, offset);
+};
